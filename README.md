@@ -1,2 +1,13 @@
 # Capstone-DS
-Data Structures capstone project
+
+Pairing Graphs with <design pattern>
+
+# TODO
+
+- Choose between the following design patterns
+- - Template Method
+- - Decorators
+- - Positions
+
+
+

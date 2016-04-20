@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-
+using namespace std;
 // adjacency list implementation
 // for a directed graph
 
@@ -23,7 +23,7 @@ struct Edge
 struct graph
 {
 	int size = 0;
-	std::vector< std::vector<Edge> > graph;
+	vector< vector<Edge> > graph;
 	// u = origin node
 	// v = out direction node we end at
 	// w = weight of the edge
@@ -33,6 +33,16 @@ struct graph
 		graph[u].push_back(e);
 		++size;
 	}
+// function to make easy traversals? 
+
+	void goToNext()
+	{
+		
+	}
+	void goToPrev()
+	{
+	}
+
 
 };
 

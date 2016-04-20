@@ -13,7 +13,7 @@ Make on base class, and then derive from it.
 Fit each graph traversal method into one base class, and have each specific algo derive and change certain aspects
 
 Ex. 
-
+````
 Base
 {
 // vars
@@ -46,7 +46,7 @@ DFS:Base
 BFS:Base
 {
 }
-
+````
 Topological sorts using DFS/BFS (or queue based)
 
 

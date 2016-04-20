@@ -4,15 +4,9 @@ Pairing Graphs Traversals with Template Methods
 Implement all of the algorithms discussed in OpenDSA, or just a subset?
 # TODO
 - implement random-graph creation
-- research graph specifics (acyclic vs cyclic)
-- Organize the templated methods better, stub out code
-Template Methods with Graph Traversals
+- create graph wrapper functions
 
-Make on base class, and then derive from it. 
 
-Fit each graph traversal method into one base class, and have each specific algo derive and change certain aspects
-
-Ex. 
 ````
 Base
 {
@@ -52,4 +46,6 @@ Topological sorts using DFS/BFS (or queue based)
 
 
 
-
+# References
+Implementation Tips
+- slide 26+ >> https://ece.uwaterloo.ca/~cmoreno/ece250/2012-03-26--graphs-implementation.pdf

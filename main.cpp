@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 #include "graph.cpp"
+#include "algorithms.cpp"
+#include "Complexity_Timer.hpp"
+#include "Complexity_Recorder.hpp"
 // use  case: 
 //
 // vector< vector<Edge> > adjacancies;
@@ -20,9 +23,8 @@ using namespace std;
 
 int main()
 {
-	Edge myEdge(3, 5);
-
-	vector< vector<Edge> > graph;
-	graph[5].push_back(myEdge);
+	graph myGraph;
+	// create a random graph
+	myGraph.addElement(0, 1, 0);
 
 }

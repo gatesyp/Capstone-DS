@@ -20,6 +20,21 @@ struct Edge
 
 };
 
+struct graph
+{
+	int size = 0;
+	std::vector< std::vector<Edge> > graph;
+	// u = origin node
+	// v = out direction node we end at
+	// w = weight of the edge
+	void addElement(int u, int v, int w)
+	{
+		Edge e = Edge(v, w);
+		graph[u].push_back(e);
+		++size;
+	}
+
+};
 
 
 #endif

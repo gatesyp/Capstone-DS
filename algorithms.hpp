@@ -6,14 +6,14 @@
 
 // define the base algorithm class
 // will have MST algos, shortest path algo, and dfs/bfs
-struct algorithm()
+struct algorithm
 {
 	int steps;
 // stuff	
 };
 
 
-struct Djisktra : algorithm()
+struct Djisktra : algorithm
 {
 
 };

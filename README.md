@@ -2,7 +2,9 @@
 
 Pairing Graphs Traversals with Template Methods
 <br>
-Implement all of the algorithms discussed in OpenDSA, or just a subset?
+Solve a problem using Graph traversals. 
+- Shortest path problems
+- Min. Span. Tree algos?
 # TODO
 - implement random-graph creation
 - create graph wrapper functions
@@ -21,6 +23,12 @@ Djisktra:Base
 // keep vars the same
 // different core algorithm now
 }
+// shortest path
+AStar:Base
+{
+// keep vars the same
+// different core algorithm now
+}
 
 // minimally spanning tree
 Prim:Base
@@ -31,14 +39,6 @@ Prim:Base
 
 // kruskals MSP
 Kruskal:Base
-{
-}
-// depth first search
-DFS:Base
-{
-}
-// breadth first search
-BFS:Base
 {
 }
 ````

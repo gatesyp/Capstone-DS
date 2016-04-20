@@ -1,6 +1,7 @@
 # Capstone-DS
 
 Pairing Graphs Traversals with Template Methods
+<br>
 Implement all of the algorithms discussed in OpenDSA, or just a subset?
 # TODO
 - implement random-graph creation

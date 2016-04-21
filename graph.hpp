@@ -37,7 +37,6 @@ struct graph
 
 	void goToNext()
 	{
-		
 	}
 	void goToPrev()
 	{

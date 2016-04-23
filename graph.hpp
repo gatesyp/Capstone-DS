@@ -11,15 +11,14 @@ using namespace std;
 // define the edges struct
 struct Edge
 {
-	int vertex;
-	double weight;
-	Edge() : vertex(), weight()
+	int to;
+	double length;
+	Edge() : to(), length()
 	{}
-	Edge(int d_vertex, double d_weight) : vertex(d_vertex), weight(d_weight)
+	Edge(int d_to, double d_weight) : to(d_to), length(d_weight)
 	{}
 
 };
-
 struct graph
 {
 	int size = 0;

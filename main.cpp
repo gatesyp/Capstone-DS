@@ -26,5 +26,10 @@ int main()
 	graph myGraph;
 	// create a random graph
 	myGraph.addElement(0, 1, 0);
+	myGraph.addElement(1, 2, 2);
+	myGraph.addElement(0, 2, 1);
+	Djisktra d;
+	int max = d.getPath(myGraph.graph, 0, 2);
+	cout << max;
 
 }

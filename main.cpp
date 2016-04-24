@@ -35,14 +35,14 @@ int main() {
 		stats[i].reset();
 	}
 	int counter = 0;
+	// initialize graph space
 	vector< vector<Edge> > graph(10, vector<Edge>(10));// = { { {1,1}, {3,2} }, { {2,1} }, { {3,1} }, { } };
-
+	Edge e;
 	for(int SIZE = 10; SIZE < 20; ++SIZE ) {
 		cout << SIZE << endl;
 
 		//initialize graph
 		int node, to, length;
-		Edge e;
 		for(int i = 0; i< SIZE; i++) {
 			node = rand() % SIZE;
 			to = rand() % SIZE;

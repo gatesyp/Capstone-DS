@@ -42,12 +42,15 @@ int main() {
 
 		//initialize graph
 		int node, to, length;
+		Edge e;
 		for(int i = 0; i< SIZE; i++) {
 			node = rand() % SIZE;
 			to = rand() % SIZE;
 			length = rand() % SIZE;
 			cout << node << "   " << to << "   " << length << endl;
-			//graph[node].push_back( to, length );
+			e.to = to;
+			e.length = length;
+			graph[node].push_back(e);
 		}
 
 		timer1.restart();

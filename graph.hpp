@@ -18,8 +18,20 @@ struct Edge
 	{}
 	Edge(int d_to, double d_weight) : to(d_to), length(d_weight)
 	{}
-
+	// overloaded copy constructor
+	Edge(const Edge &eSource)
+	{
+		to = eSource.to;
+		length = eSource.length;
+	}
 };
+// overload assignment operator
+//Edge& Edge::operator= (const Edge &eSource)
+//{
+	//to = eSource.to;
+	//length = eSource.length;
+	//return *this;
+//}
 // maybe dont wrap graph in a class
 struct graph
 {

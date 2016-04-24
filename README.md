@@ -1,50 +1,15 @@
 # Capstone-DS
 
-Pairing Graphs Traversals with Template Methods
+Pairing Graphs Traversals with Template Methods (shortest path)
 <br>
 Solve a problem using Graph traversals. 
 - Shortest path problems
-- Min. Span. Tree algos?
+
 # TODO
-- implement random-graph creation
-- create graph wrapper functions
-
-
-````
-Base
-{
-// vars
-// core algorithm
-}
-
-// shortest path
-Djisktra:Base
-{
-// keep vars the same
-// different core algorithm now
-}
-// shortest path
-AStar:Base
-{
-// keep vars the same
-// different core algorithm now
-}
-
-// minimally spanning tree
-Prim:Base
-{
-// keep vars the same
-// different core algorithm now
-}
-
-// kruskals MSP
-Kruskal:Base
-{
-}
-````
-Topological sorts using DFS/BFS (or queue based)
-
-
+1. implement a working graph initilization which must have a clear path from origin to end
+  1. maybe do random graph creation, then hardcode a clear path to the end
+2. implement a\* algorithm
+3. test djisktra thoroughly
 
 
 # References

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+
 using namespace std;
 // adjacency list implementation
 // for a directed graph
@@ -19,6 +20,7 @@ struct Edge
 	{}
 
 };
+// maybe dont wrap graph in a class
 struct graph
 {
 	int size = 0;
@@ -32,17 +34,7 @@ struct graph
 		graph[u].push_back(e);
 		++size;
 	}
-// function to make easy traversals? 
-
-	void goToNext()
-	{
-	}
-	void goToPrev()
-	{
-	}
-
 
 };
-
 
 #endif

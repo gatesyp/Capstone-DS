@@ -13,7 +13,7 @@ using namespace std;
 struct Edge
 {
 	int to;
-	double length;
+	int length;
 	Edge() : to(), length()
 	{}
 	Edge(int d_to, double d_weight) : to(d_to), length(d_weight)

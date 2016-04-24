@@ -35,15 +35,19 @@ int main() {
 		stats[i].reset();
 	}
 	int counter = 0;
-	for(int SIZE = 100; SIZE < 100000; SIZE *= 10) {
+	vector< vector<Edge> > graph(10, vector<Edge>(10));// = { { {1,1}, {3,2} }, { {2,1} }, { {3,1} }, { } };
+
+	for(int SIZE = 10; SIZE < 20; ++SIZE ) {
 		cout << SIZE << endl;
 
 		//initialize graph
-		vector< vector<Edge> > graph = { { {1,1}, {3,2} }, { {2,1} }, { {3,1} }, { } };
-		int node;
+		int node, to, length;
 		for(int i = 0; i< SIZE; i++) {
 			node = rand() % SIZE;
-			graph[node] = { {rand() % SIZE, rand() % SIZE} };
+			to = rand() % SIZE;
+			length = rand() % SIZE;
+			cout << node << "   " << to << "   " << length << endl;
+			//graph[node].push_back( to, length );
 		}
 
 		timer1.restart();

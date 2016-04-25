@@ -5,6 +5,11 @@ Pairing Graphs Traversals with Template Methods (shortest path)
 Solve a problem using Graph traversals. 
 - Shortest path problems
 
+#To Run
+```
+g++ -std=c++0x main.cpp -o algo
+```
+
 # TODO
 1. implement a working graph initilization which must have a clear path from origin to end
   1. maybe do random graph creation, then hardcode a clear path to the end

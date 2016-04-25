@@ -4,22 +4,54 @@
 #include <set>
 #include <iostream>
 #include <vector>
-#include "graph.cpp"
+#include "graph.hpp"
 using namespace std;
 // define the base algorithm class
 // will have MST algos, shortest path algo, and dfs/bfs
-struct algorithm
+struct Toolbox
 {
+	vector< vector<Edge> > graph;
+	Toolbox() : graph() 
+	{}
+	// graph.size(), INT_MAX 
+	int size, max;
+	Toolbox(int d_size, int d_max) : size(d_size), max(d_max)
+	{}	
+
+	set< pair<int,int> > active_vertices;
+	virtual int algorithm(int source, int target){ return source;}
+	void createGraph(int choice)
+	{
+		if(choice == 0)
+		{
+			graph.resize(5);
+			for(int i = 0; i < 5; ++i)
+				graph[i].resize(5);
+		}
+		else
+		{
+			graph[0].push_back( {1,1});
+			graph[0].push_back({3,2});
+			graph[1].push_back( {3,2});
+			graph[2].push_back( {2,1}); 
+			graph[3].push_back( {3,1});
+			graph[4].push_back( { }) ;
+
+
+
+		}
+	}
+
+
 	// stuff	
 };
-
-
-struct Djisktra : algorithm
+struct Test{};
+struct Djisktra : Toolbox 
 {
-	int dijkstra(const vector< vector<Edge> > &graph, int source, int target) {
-		vector<int> min_distance( graph.size(), INT_MAX );
+	int algorithm(int source, int target) {
+		vector<int> min_distance(graph.size(), INT_MAX);
+		cout << "Djisktra";
 		min_distance[ source ] = 0;
-		set< pair<int,int> > active_vertices;
 		active_vertices.insert( {0,source} );
 		while (!active_vertices.empty()) {
 			int where = active_vertices.begin()->second;
@@ -36,5 +68,4 @@ struct Djisktra : algorithm
 	}
 
 };
-
 #endif

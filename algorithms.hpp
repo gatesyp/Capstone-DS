@@ -70,8 +70,26 @@ struct Djisktra : Toolbox
 
 struct Floyd : Toolbox
 {
+
 	int algorithm(int source, int target)
 	{
+	int neighbours[graph.size()][graph.size()];
+		// copy over the neighbour matrix
+		for(int i = 0; i < graph.size(); i++)
+		{
+			for(int j = 0; j < graph[i].size(); j++)
+			{
+			neighbours[i][graph[i][j].to] = graph[i][j].length;
+			}
+		}
+		for(int i = 0; i < graph.size(); i++)
+		{
+			for(int j = 0; j < graph[i].size(); j++)
+			{
+			cout << neighbours[i][i];
+			}
+			cout << " " << endl;
+		}
 		return INT_MAX;
 	}
 };

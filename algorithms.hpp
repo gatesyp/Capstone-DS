@@ -73,22 +73,32 @@ struct Floyd : Toolbox
 
 	int algorithm(int source, int target)
 	{
-	int neighbours[graph.size()][graph.size()];
+		int neighbours[graph.size()][graph.size()];
 		// copy over the neighbour matrix
 		for(int i = 0; i < graph.size(); i++)
 		{
-			for(int j = 0; j < graph[i].size(); j++)
+			for(int j = 0; j < 5; j++)
 			{
-			neighbours[i][graph[i][j].to] = graph[i][j].length;
+				if(graph[i][j].to == j)
+				{
+					neighbours[i][graph[i][j].to] = graph[i][j].length;
+
+				}
+				else 
+				{	
+					neighbours[i][j] = 9999;
+				}
+				cout << neighbours[i][graph[i][j].to] << " ";
 			}
+			cout << endl;
 		}
 		for(int i = 0; i < graph.size(); i++)
 		{
 			for(int j = 0; j < graph[i].size(); j++)
 			{
-			cout << neighbours[i][i];
+				cout << neighbours[i][j] << " " ;
 			}
-			cout << " " << endl;
+			cout <<  endl;
 		}
 		return INT_MAX;
 	}

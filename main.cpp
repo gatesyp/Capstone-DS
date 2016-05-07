@@ -11,16 +11,18 @@ timer timer1;
 int main() {
 	Djisktra d;
 	d.V = 9;
-	d.createGraph(2);
+	d.createGraph(1);
 	d.printGraph();
 	d.djisktra(0);
 	d.printSolution();
 	
-	Floyd f;
-	f.V = 9;
-	f.createGraph(0);
-	f.floyd();
-	f.printGraph();
+	//Floyd f;
+	//f.V = 9;
+	//f.createGraph(0);
+	//f.printGraph();
+	//f.floyd();
+	//cout << "AFTER ALGO-------------" << endl;
+	//f.printGraph();
 
 
 	return 0;

@@ -30,6 +30,7 @@ struct Toolbox
 		// for floyd
 		if(choice == 0)
 		{
+
 			graph.resize(9);
 			for(auto i : graph)
 				i.resize(9);
@@ -43,6 +44,9 @@ struct Toolbox
 				{8, 11, 999999, 999999, 999999, 999999, 1, 999999, 7},
 				{999999, 999999, 2, 999999, 999999, 999999, 6, 7, 999999}
 			};
+		// make the diagonals 0
+		for(int i = 0; i < V; i++)
+			graph[i][i] = 0;
 		}
 		// for djisktra
 		else if (choice == 1)
@@ -136,6 +140,7 @@ struct Floyd : Toolbox
 {
 	void floyd()
 	{
+		// begin algorithm
 		for(int k = 0; k < V; k++)
 			for(int i = 0; i < V; i++)
 				for(int j = 0; j < V; j++)

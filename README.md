@@ -7,7 +7,7 @@ Solve a problem using Graph traversals.
 
 #To Run
 ```
-g++ -std=c++0x main.cpp -o algo
+g++ -std=c++11 main.cpp -o algo
 ```
 
 # TODO

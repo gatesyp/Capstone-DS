@@ -22,12 +22,12 @@ struct Toolbox
 
 	Toolbox(int d_size) : V(d_size) 
 	{}	
-	virtual int algorithm(int source, int target){ return source; }
-
+	
 	void createGraph(int choice)
 	{
 		sptSet.resize(V);
-			dist.resize(9);
+		dist.resize(9);
+		// for floyd
 		if(choice == 0)
 		{
 			graph.resize(9);
@@ -42,9 +42,10 @@ struct Toolbox
 				{999999, 999999, 999999, 14, 999999, 2, 999999, 1, 6},
 				{8, 11, 999999, 999999, 999999, 999999, 1, 999999, 7},
 				{999999, 999999, 2, 999999, 999999, 999999, 6, 7, 999999}
-				};
+			};
 		}
-		else
+		// for djisktra
+		else if (choice == 1)
 		{
 			graph.resize(9);
 			for(auto i : graph)
@@ -58,7 +59,7 @@ struct Toolbox
 				{0, 0, 0, 14, 0, 2, 0, 1, 6},
 				{8, 11, 0, 0, 0, 0, 1, 0, 7},
 				{0, 0, 2, 0, 0, 0, 6, 7, 0}
-				};
+			};
 		}
 	}
 	void printGraph()
@@ -101,8 +102,8 @@ struct Djisktra : public Toolbox
 		// Initialize all distances as INFINITE and stpSet[] as false
 		for (int i = 0; i < V; i++)
 		{
-				dist[i] = INT_MAX;
-				sptSet[i] = false;
+			dist[i] = INT_MAX;
+			sptSet[i] = false;
 		}
 
 		// Distance of source vertex from itself is always 0
@@ -113,7 +114,7 @@ struct Djisktra : public Toolbox
 		{
 			// Pick the minimum distance vertex from the set of vertices not
 			// yet processed. u is always equal to src in first iteration.
-			int u = minDistance(); // TODO fix function call
+			int u = minDistance(); 
 
 			// Mark the picked vertex as processed
 			sptSet[u] = true;

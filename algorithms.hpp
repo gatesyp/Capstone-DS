@@ -30,9 +30,19 @@ struct Toolbox
 			dist.resize(9);
 		if(choice == 0)
 		{
-			//graph.resize(5);
-			for(int i = 0; i < 5; ++i)
-				graph[i].resize(5);
+			graph.resize(9);
+			for(auto i : graph)
+				i.resize(9);
+			graph = {{9999999, 4, 999999, 999999, 999999, 999999, 999999, 8, 999999},
+				{4, 999999, 8, 999999, 999999, 999999, 999999, 11, 999999},
+				{999999, 8, 999999, 7, 999999, 4, 999999, 999999, 2},
+				{999999, 999999, 7, 999999, 9, 14, 999999, 999999, 999999},
+				{999999, 999999, 999999, 9, 999999, 1999999, 999999, 999999, 999999},
+				{999999, 999999, 4, 999999, 1999999, 999999, 2, 999999, 999999},
+				{999999, 999999, 999999, 14, 999999, 2, 999999, 1, 6},
+				{8, 11, 999999, 999999, 999999, 999999, 1, 999999, 7},
+				{999999, 999999, 2, 999999, 999999, 999999, 6, 7, 999999}
+				};
 		}
 		else
 		{
@@ -51,9 +61,6 @@ struct Toolbox
 				};
 		}
 	}
-	// A utility function to find the vertex with minimum distance value, from
-	// the set of vertices not yet included in shortest path tree
-
 	void printGraph()
 	{
 		for(auto i : graph)
@@ -62,9 +69,11 @@ struct Toolbox
 				cout << j << " ";
 			cout << endl;
 		}
-
-
 	}
+};
+
+struct Djisktra : public Toolbox 
+{
 	// A utility function to print the constructed distance array
 	void printSolution()
 	{
@@ -72,14 +81,8 @@ struct Toolbox
 		for (int i = 0; i < V; i++)
 			printf("%d \t\t %d\n", i, dist[i]);
 	}
-};
-
-struct Djisktra : Toolbox 
-{
-
 	int minDistance()
 	{
-		cout << "HELLO";	
 		// Initialize min value
 		int min = INT_MAX, min_index;
 
@@ -105,7 +108,6 @@ struct Djisktra : Toolbox
 		// Distance of source vertex from itself is always 0
 		dist[src] = 0;
 
-			cout << "calling min distance";
 		// Find shortest path for all vertices
 		for (int count = 0; count < V-1; count++)
 		{
@@ -126,9 +128,6 @@ struct Djisktra : Toolbox
 						&& dist[u]+graph[u][v] < dist[v])
 					dist[v] = dist[u] + graph[u][v];
 		}
-
-		// print the constructed distance array
-		printSolution(); 
 	}
 };
 
@@ -136,39 +135,11 @@ struct Floyd : Toolbox
 {
 	void floyd()
 	{
-
-		// Initialize 
-		int vertices = 5;
-		vector < vector <int> > a(vertices, vector<int>(vertices,999999999));
-
-		// initialize diagonal
-		for(int i=0; i < vertices; i++)
-			a[i][i]=0;
-
-		// initialize distances
-		a[0][1]=20;
-		a[0][2]=10;
-		a[0][4]=5;
-		a[2][3]=10;
-		a[3][1]=3;
-		a[4][2]=2;
-		a[4][3]=4;
-
-		// Floyd-Warshall
-		// Add nodes between (first 1 then 2, 3 till n) and look if
-		// distance is shorter
-		for(int k = 0; k < vertices; k++)
-			for(int i = 0; i < vertices; i++)
-				for(int j = 0; j < vertices; j++)
-					if(a[i][j]>a[i][k]+a[k][j])
-						a[i][j]=a[i][k]+a[k][j];
-
-		// Print out final distance matrix
-		for(int i = 0; i < vertices; i++){
-			for(int j = 0; j < vertices; j++)
-				cout << a[i][j] << " ";
-			cout << endl;
-		}
+		for(int k = 0; k < V; k++)
+			for(int i = 0; i < V; i++)
+				for(int j = 0; j < V; j++)
+					if(graph[i][j]>graph[i][k]+graph[k][j])
+						graph[i][j]=graph[i][k]+graph[k][j];
 	}
 };
 #endif

@@ -9,10 +9,10 @@ using namespace std;
 // define the base algorithm class
 struct Toolbox
 {
+	// define how many vertices exist in the graph
 	int V = 9;
+	// create empty adjacency matrix
 	vector < vector <int> > graph;
-	// distance from src to i
-
 
 	Toolbox() : V() 
 	{}	
@@ -20,9 +20,11 @@ struct Toolbox
 	Toolbox(int d_size) : V(d_size) 
 	{}	
 
+	// the two pure virtual functions that MUST be defined in any derived class
 	virtual void createGraph() = 0;
 	virtual void algo() = 0;
 
+	// a utility function to print the graph
 	void printGraph()
 	{
 		for(auto i : graph)
@@ -39,16 +41,27 @@ struct Toolbox
 struct Djisktra : Toolbox 
 {
 	int src = 0;
-	vector <bool> sptSet; // sptSet[i] will true if vertex i is included in shortest
-	// path tree or shortest distance from src to i is finalized
-	vector <int> dist;	 // The output array. dist[i] will hold the shortest
+	// vector which contains information on if a vertex is included in the path
+	vector <bool> sptSet; 
+	// the solutions array. holds the distance from the source node to each other node
+	vector <int> dist;	 
 
+	// redefine the createGraph virtual function
 	void createGraph()
 	{
+		// initialize the required structures before performing algorithm
 		sptSet.resize(V);
-		dist.resize(9);
-		graph.resize(9);
+		dist.resize(V);
+		graph.resize(V);
 
+		// Initialize all distances as INFINITE and stpSet[] as false
+		for (int i = 0; i < V; i++)
+		{
+			dist[i] = INT_MAX;
+			sptSet[i] = false;
+		}
+
+		// create the graph
 		for(auto i : graph)
 			i.resize(9);
 		graph = {{0, 7, 6, 0, 0, 0, 8, 0, 0},
@@ -61,6 +74,7 @@ struct Djisktra : Toolbox
 			{0, 0, 0, 0, 5, 2, 0, 0, 0},
 			{0, 0, 0, 0, 1, 0, 0, 0, 0}
 		};
+		// an alternate graph that can be commented out (another test case which is not discussed in paper)
 		//graph = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
 			//{4, 0, 8, 0, 0, 0, 0, 11, 0},
 			//{0, 8, 0, 7, 0, 4, 0, 0, 2},
@@ -73,6 +87,8 @@ struct Djisktra : Toolbox
 		//};
 
 	}
+	// find the min distance between a vertex
+	// from set of vertices not yet includest in shortest path tree
 	int minDistance()
 	{
 		// Initialize min value
@@ -81,47 +97,33 @@ struct Djisktra : Toolbox
 		for (int v = 0; v < V; v++)
 			if (sptSet[v] == false && dist[v] <= min)
 				min = dist[v], min_index = v;
-
 		return min_index;
 	}
 
-	// Function that implements Dijkstra's single source shortest path algorithm
-	// for a graph represented using adjacency matrix representation
+	// redefine algo pure virtual function. Djisktra implementation
 	void algo()
 	{
-
-		// Initialize all distances as INFINITE and stpSet[] as false
-		for (int i = 0; i < V; i++)
-		{
-			dist[i] = INT_MAX;
-			sptSet[i] = false;
-		}
-
-		// Distance of source vertex from itself is always 0
+		// initialize source vertex distance
 		dist[src] = 0;
 
-		// Find shortest path for all vertices
-		for (int count = 0; count < V-1; count++)
+		for (int i = 0; i < V-1; i++)
 		{
-			// Pick the minimum distance vertex from the set of vertices not
-			// yet processed. u is always equal to src in first iteration.
+			// Pick the minimum distance vertex from the set of vertices not processed yet
 			int u = minDistance(); 
 
-			// Mark the picked vertex as processed
+			// Mark the picked vertex 
 			sptSet[u] = true;
 
 			// Update dist value of the adjacent vertices of the picked vertex.
 			for (int v = 0; v < V; v++)
-
-				// Update dist[v] only if is not in sptSet, there is an edge from 
+				// update distance if is not in sptSet, there is an edge from 
 				// u to v, and total weight of path from src to v through u is 
-				// smaller than current value of dist[v]
-				if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX 
-						&& dist[u]+graph[u][v] < dist[v])
+				// smaller than the current distance
+				if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u]+graph[u][v] < dist[v])
 					dist[v] = dist[u] + graph[u][v];
 		}
 	}
-	// A utility function to print the constructed distance array
+	// print the solution
 	void printSolution()
 	{
 		printf("Vertex Distance from Source\n");
@@ -132,10 +134,9 @@ struct Djisktra : Toolbox
 
 struct Floyd : Toolbox
 {
-
 	void createGraph()
 	{
-		// for floyd
+		// for floyd, intialize variables
 		graph.resize(9);
 		for(auto i : graph)
 			i.resize(9);
@@ -150,6 +151,7 @@ struct Floyd : Toolbox
 			{999999, 999999, 999999, 999999, 5, 2, 999999, 999999, 999999},
 			{999999, 999999, 999999, 999999, 1, 999999, 999999, 999999, 999999}
 		};
+		// an alternative graph used in initial testing. not discussed in paper. can be uncommented 
 		//graph = {{9999999, 4, 999999, 999999, 999999, 999999, 999999, 8, 999999},
 		//
 			//{4, 999999, 8, 999999, 999999, 999999, 999999, 11, 999999},
@@ -165,12 +167,14 @@ struct Floyd : Toolbox
 		for(int i = 0; i < V; i++)
 			graph[i][i] = 0;
 	}
+	// define the pure virtual function for Floyd-Warshall algorithm
 	void algo()
 	{
-		// begin algorithm
+		// advanced analysis of algorithm is in paper
 		for(int k = 0; k < V; k++)
 			for(int i = 0; i < V; i++)
 				for(int j = 0; j < V; j++)
+					// update the graph if the distance for the sub problem is more optimized
 					if(graph[i][j]>graph[i][k]+graph[k][j])
 						graph[i][j]=graph[i][k]+graph[k][j];
 	}

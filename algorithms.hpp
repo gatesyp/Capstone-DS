@@ -38,7 +38,7 @@ struct Toolbox
 
 
 
-struct Djisktra : Toolbox 
+struct Dijsktra : Toolbox 
 {
 	int src = 0;
 	// vector which contains information on if a vertex is included in the path

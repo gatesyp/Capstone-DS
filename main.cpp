@@ -11,16 +11,19 @@ timer timer1;
 int main() {
 	Djisktra d;
 	d.V = 9;
-	d.createGraph(1);
+	//d.src = 0;
+	d.createGraph();
 	d.printGraph();
-	d.djisktra(0);
-	//d.printSolution();
+	d.algo();
+	cout << "AFTER ALGO-------------" << endl;
+	d.printSolution();
 	
+	cout << "DOING FLOYD NOW-------------" << endl;
 	Floyd f;
 	f.V = 9;
-	f.createGraph(0);
+	f.createGraph();
 	f.printGraph();
-	f.floyd();
+	f.algo();
 	cout << "AFTER ALGO-------------" << endl;
 	f.printGraph();
 
